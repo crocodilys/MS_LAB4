@@ -1,14 +1,15 @@
-ifneq ($(KERNELRELEASE),)
-   obj-m := hallo.o
-else
+MODULENAME=calc
 
+obj-m += $(MODULENAME).o
 
-KERNELDIR := /lib/modules/$(shell uname -r)/build
-PWD := $(shell pwd)
+module:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
-default:
-	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
-endif
 clean:
-	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 
+install:
+	sudo insmod $(MODULENAME).ko
+
+uninstall:
+	sudo rmmod $(MODULENAME)
