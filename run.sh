@@ -1,4 +1,5 @@
-echo - > /proc/oper1 
-echo 22 > /proc/a
-echo 2 > /proc/b
-cat /proc/result
+echo "$1" > /proc/calc/arg1
+echo "$3" > /proc/calc/arg2
+echo "$2" > /proc/calc/operation
+
+cat /proc/calc/result
