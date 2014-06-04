@@ -1,5 +1,4 @@
-//#define SYSFS
-
+#define SYSFS
 
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -30,7 +29,8 @@ static char operation_input[WRITE_SIZE];
 
 
 
-long calculate(void) {
+long calculate(void) 
+{
 	long a1 = 0;
 	long a2 = 0;
 	long res = 0;
